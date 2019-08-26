@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="以后再取名字">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+  	<link rel="stylesheet" href="/css/style.css">
+  	<link rel="stylesheet" href="/css/github-gist.css">
+    <!--SEO-->
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>内网穿透小工具 | 以后再取名字</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1d283676d7e81d10054b06f70a90decf";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+</head>
+  <body>
+    <div class="container">
+	<header class="header">
+	  <div class="blog-title">
+	    <a href="/"> <img src="/img/logo.png"></a>
+	  </div>
+	  <nav>
+	    <ul class="menu">
+	      
+	        <li class="menu-item">
+	          <a href="/" class="menu-item-link nav-underline">首页</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/archives" class="menu-item-link nav-underline">归档</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/categories" class="menu-item-link nav-underline">分类</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/tags" class="menu-item-link nav-underline">标签</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/links" class="menu-item-link nav-underline">友链</a>
+	        </li>&sdot;
+	      
+	      <li class="menu-item">
+	      <a href="/about">关于</a>
+	      </li>
+       </ul>
+	  </nav>
+	</header>
+</div>
+
+<hr />
+    <div class="container">	
+	<div class="archive-main">
+	    <div class="archive-title">
+	    	<h2>内网穿透小工具</h2>	    	
+	    </div>
+	    <div class="archive-meta">
+	   	    2019-08-26&nbsp;&nbsp;&sdot;&nbsp;&nbsp; 
+	   	    
+            	<a class="tag" href="/tags/#穿透"title="穿透">穿透</a>&nbsp;&nbsp;
+            
+	    </div>
+		<hr class="one"/>
+		<div class="archive-content typo">
+			<h6 id="转载：（微信公众号）CodeSheep，内网穿透，了解一下"><a href="#转载：（微信公众号）CodeSheep，内网穿透，了解一下" class="headerlink" title="转载：（微信公众号）CodeSheep，内网穿透，了解一下"></a>转载：（微信公众号）CodeSheep，内网穿透，了解一下</h6><hr>
+<h5 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h5><ol>
+<li>如何让任何地方都能访问自己家里的笔记本上的应用?</li>
+<li>如何让局域网的服务器可以被任何地方访问到？</li>
+</ol>
+<h5 id="工具介绍："><a href="#工具介绍：" class="headerlink" title="工具介绍："></a>工具介绍：</h5><ol>
+<li><p>Ngrok</p>
+<p>简介：一个通过任何NAT或防火墙为您的本地主机服务器提供即时访问、安全的URL命令。类似花生壳，分为服务端和客户端，也可以自己搭建服务端</p>
+<p>主页：<a href="http://www.ngrok.cc/" target="_blank" rel="noopener">http://www.ngrok.cc/</a></p>
+</li>
+<li><p>autossh</p>
+<p>简介：autossh是一个程序，用于启动ssh的副本并进行监控，在死亡或者停止传输流量时根据需要重新启动它。使用端口转发环路或远程回显服务进行连接监视。在遇到连接拒绝等快速故障时，关闭连接尝试的速度。在OpenBSD，Linux、Mac OS等上编译和测试；应该在其他BSD上工作，免费软件</p>
+<p>主页：<a href="https://www.harding.motd.ca/autossh/" target="_blank" rel="noopener">https://www.harding.motd.ca/autossh/</a></p>
+</li>
+<li><p>Natapp</p>
+<p>简介：基于ngrok的国内收费内网穿透工具，类似花生壳，有免费版本比花生壳好。免费版本：提供http，https，tcp全隧道穿透，随机域名/TCP端口，不定时强制更换域名/端口，自定义本地端口。</p>
+<p>主页：<a href="https://natapp.cn/" target="_blank" rel="noopener">https://natapp.cn/</a></p>
+</li>
+<li><p>Frp（推荐）</p>
+<p>简介：frp是一个可用于内网穿透的高性能的反向代理应用，支持tcp、udp、http、https协议。利用处于内网或防火墙后的机器，对外网环境提供http或https服务。对于http、https服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个80端口。例如在家里通过ssh访问公司内网环境内的主机。</p>
+<p>主页：<a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">https://github.com/fatedier/frp</a></p>
+</li>
+<li><p>Lanproxy</p>
+<p>简介：lanproxy是一个将局域网个人电脑、服务器代理到公网的内网穿透工具，目前仅支持tcp流量转发，可支持任何tcp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面…）。目前市面上提供类似服务的有花生壳、TeamView、GoToMyCloud等等，但要使用第三方的公网服务器就必须为第三方付费，并且这些服务都有各种各样的限制，此外，由于数据包会流经第三方，因此对数据安全也是一大隐患。</p>
+<p>主页：<a href="https://github.com/ffay/lanproxy" target="_blank" rel="noopener">https://github.com/ffay/lanproxy</a></p>
+</li>
+<li><p>Spike</p>
+<p>简介：Spike是一个可以用来将你的内网服务暴露在公网的快速的反向代理，基于ReactPHP，采用IO多路复用模型。采用php实现。</p>
+<p>主页：<a href="https://github.com/slince/spike" target="_blank" rel="noopener">https://github.com/slince/spike</a></p>
+</li>
+<li><p>花生壳</p>
+<p>简介：商业化比较成功的内网穿透。个人开发很不推荐，收费贵，企业可以考虑使用。</p>
+<p>主页：<a href="https://hsk.oray.com/" target="_blank" rel="noopener">https://hsk.oray.com/</a> </p>
+</li>
+<li><p>cpolar（自己添加）</p>
+<p>主页：<a href="https://www.cpolar.com/" target="_blank" rel="noopener">https://www.cpolar.com/</a></p>
+</li>
+</ol>
+ 
+		</div>
+		
+		    <div id="comments">
+		        
+   <p>评论系统未开启，无法评论！</p>
+
+		    </div>
+		
+	</div>
+</div>
+<div id="toc">
+    <div class="archive-toc">
+        <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#转载：（微信公众号）CodeSheep，内网穿透，了解一下"><span class="toc-text">转载：（微信公众号）CodeSheep，内网穿透，了解一下</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#概述："><span class="toc-text">概述：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#工具介绍："><span class="toc-text">工具介绍：</span></a>
+    </div>
+</div>
+
+		<hr />
+<div class="footer">
+	
+        
+            <a href="https://github.com/xyhmnb" rel="external nofollow" title="Github" target="_blank">
+		    	<i class="iconfont">&#xeee2;</i>
+		    </a>&nbsp;&nbsp;
+        
+            <a href="1459792120@qq.com" rel="external nofollow" title="邮箱" target="_blank">
+		    	<i class="iconfont">&#xe69f;</i>
+		    </a>&nbsp;&nbsp;
+        
+            <a href="" rel="external nofollow" title="微信" target="_blank">
+		    	<i class="iconfont">&#xe7e5;</i>
+		    </a>&nbsp;&nbsp;
+        
+            <a href="没有微博" rel="external nofollow" title="微博" target="_blank">
+		    	<i class="iconfont">&#xe629;</i>
+		    </a>&nbsp;&nbsp;
+        
+	
+</div>
+<script src="/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="copyright">
+	Copyright &copy; 2019 . 豫ICP备10206454号-2<br />Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Theme is <a href="https://github.com/praming/hexo-theme-Ice" target="_blank">Ice</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+</div>
+  </body>
+</html>
