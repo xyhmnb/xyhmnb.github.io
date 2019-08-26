@@ -26,7 +26,7 @@
     <!--Title-->
 
 
-<title>ceshi | 以后再取名字</title>
+<title>hexo--相对路径图片引用 | 以后再取名字</title>
 
 
 
@@ -91,7 +91,7 @@
     <div class="container">	
 	<div class="archive-main">
 	    <div class="archive-title">
-	    	<h2>ceshi</h2>	    	
+	    	<h2>hexo--相对路径图片引用</h2>	    	
 	    </div>
 	    <div class="archive-meta">
 	   	    2019-08-24&nbsp;&nbsp;&sdot;&nbsp;&nbsp; 
@@ -101,8 +101,11 @@
 	    </div>
 		<hr class="one"/>
 		<div class="archive-content typo">
-			<h6 id="第一步，在source文件夹下新建pictures文件夹，以后图片就放着了"><a href="#第一步，在source文件夹下新建pictures文件夹，以后图片就放着了" class="headerlink" title="第一步，在source文件夹下新建pictures文件夹，以后图片就放着了"></a>第一步，在source文件夹下新建pictures文件夹，以后图片就放着了</h6><p>asdf</p>
-<p><img src="../../images/1.png" alt></p>
+			<h6 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h6><p>在搭建好hexo博客后一直使用的是文字记录形式，没有添加过图片。其实图片能更加加深理解，但是一直没用上。</p>
+<p>md文件的图片引用方式主要有两种：一是绝对路径（大部分使用图床等等），二是相对路径（将图片全部放在一起上传，使这两者处于同一物理位置）。什么叫物理位置，我瞎取得一个名字便于理解。简单的举例，我的博客是挂载到hexo page上的，也就是说md文件最后被从本地上传到GitHub上，这时候顺便将图片也一起上传过去。然后不管本地是否存在，文件和图片显示都在云端（GitHub上）。</p>
+<h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h6><p>首先，本地的md文件是默认新建在blog/source/_posts里面的，在source文件夹下所有的文件在hexo d推送的时候都会被一模一样复制到云端，这时候我们就可以把图片文件夹放着，一起上传上去。</p>
+<p><img src="D:%5CDesktop%5Cblog%5Csource%5Cimages%5C1566791146709.png" alt="1566791146709"></p>
+<p><img src="D:%5CDesktop%5Cblog%5Csource%5Cimages%5C1566791251306.png" alt="1566791251306"></p>
  
 		</div>
 		
@@ -116,7 +119,7 @@
 </div>
 <div id="toc">
     <div class="archive-toc">
-        <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#第一步，在source文件夹下新建pictures文件夹，以后图片就放着了"><span class="toc-text">第一步，在source文件夹下新建pictures文件夹，以后图片就放着了</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#基本思路"><span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li></ol>
     </div>
 </div>
 
