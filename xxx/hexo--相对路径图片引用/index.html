@@ -101,11 +101,101 @@
 	    </div>
 		<hr class="one"/>
 		<div class="archive-content typo">
-			<h6 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h6><p>在搭建好hexo博客后一直使用的是文字记录形式，没有添加过图片。其实图片能更加加深理解，但是一直没用上。</p>
-<p>md文件的图片引用方式主要有两种：一是绝对路径（大部分使用图床等等），二是相对路径（将图片全部放在一起上传，使这两者处于同一物理位置）。什么叫物理位置，我瞎取得一个名字便于理解。简单的举例，我的博客是挂载到hexo page上的，也就是说md文件最后被从本地上传到GitHub上，这时候顺便将图片也一起上传过去。然后不管本地是否存在，文件和图片显示都在云端（GitHub上）。</p>
-<h6 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h6><p>首先，本地的md文件是默认新建在blog/source/_posts里面的，在source文件夹下所有的文件在hexo d推送的时候都会被一模一样复制到云端，这时候我们就可以把图片文件夹放着，一起上传上去。</p>
-<p><img src="D:%5CDesktop%5Cblog%5Csource%5Cimages%5C1566791146709.png" alt="1566791146709"></p>
-<p><img src="D:%5CDesktop%5Cblog%5Csource%5Cimages%5C1566791251306.png" alt="1566791251306"></p>
+			<h5 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h5><p>​    在搭建好hexo博客后一直使用的是文字记录形式，没有添加过图片。其实图片能更加加深理解，但是一直没用上。</p>
+<p>​    md文件的图片引用方式主要有两种：一是绝对路径（大部分使用图床等等），二是相对路径（将图片全部放在一起上传，使这两者处于同一物理位置）。什么叫物理位置，我瞎取得一个名字便于理解。简单的举例，我的博客是挂载到hexo page上的，也就是说md文件最后被从本地上传到GitHub上，这时候顺便将图片也一起上传过去。然后不管本地是否存在，文件和图片显示都在云端（GitHub上）。</p>
+<h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>首先，本地的md文件是默认新建在blog/source/_posts里面的，在source文件夹下所有的文件在hexo d推送的时候都会被一模一样复制到云端，这时候我们就可以把图片文件夹放着，一起上传上去。</p>
+<p><img src="../../images/1566791400932.png" alt="1566791400932"></p>
+<p><strong>这里最好不要把图片放在posts文件夹里面，因为hexo在解析的过程中_下划线属于隐藏文件夹，也就是说除了posts文件夹以外，其他的都会完全一样推送</strong></p>
+<h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><p>既然图片文件夹已经创建好，那么接下来就开始设置路径。</p>
+<p><strong>注意：这里有坑</strong></p>
+<p>​    看到这里有朋友迫不及待操作，直接把图片放在images里面，接着md文件相对引用，嗯图片显示出来了奈斯！结果hexo d一推送，哦豁图片显示不出来，这就是掉坑了。<strong>md文件能显示图片并不一定代表推送后能显示图片</strong></p>
+<p>看到这里就有小伙伴懵了，wtf本地都是好的为啥一推送就凉凉。所以啊，别着急啊慢慢踩坑。</p>
+<table>
+<thead>
+<tr>
+<th>本地路径</th>
+<th>/</th>
+<th>/</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>source</td>
+<td>_posts</td>
+<td>1.md文件（引用图片路径–../../images/1.png）</td>
+<td>显示成功</td>
+</tr>
+<tr>
+<td></td>
+<td>images</td>
+<td>1.png</td>
+<td></td>
+</tr>
+<tr>
+<td>云端路径（public）</td>
+<td>2019</td>
+<td>7/23/1.md文件（引用图片路径–../../images/1.png）</td>
+<td>显示失败</td>
+</tr>
+<tr>
+<td></td>
+<td>images</td>
+<td>1.png</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>通过这两个的比较很容易发现，本地路径的引用不变，推送到云端后对应的文件夹不存在（或者说是图片已存在但是相对路径是错的）。云端图片引用路径：../../images/1.png，在退回两级后到了7文件夹下，此时该文件夹下并没有images文件夹，此时你就会发现问题，图片路径本地和云端环境不一致。</p>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>将本地和云端的路径层次设置为一样。不过，这里涉及到config文件参数设置问题。</p>
+<p>有两种方法：</p>
+<ol>
+<li>本地参照云端改变（在source文件夹下设置等量多级目录，很麻烦）</li>
+<li>云端参照本地改变（同时修改本地和云端目录，以后使用看着容易明白）</li>
+</ol>
+<p>这里我用的是第二种方法：</p>
+<p>修改云端生成目录</p>
+<p><img src="../../images/1566803630559.png" alt="1566803630559"></p>
+<p>修改本地生成目录：</p>
+<p><img src="../../images/1566803679894.png" alt="1566803679894"></p>
+<table>
+<thead>
+<tr>
+<th>本地路径</th>
+<th>/</th>
+<th>/</th>
+<th>/</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>source</td>
+<td>_posts</td>
+<td>xxx</td>
+<td>1.md</td>
+<td>显示成功</td>
+</tr>
+<tr>
+<td></td>
+<td>images</td>
+<td>1.png</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>云端路径（public）</td>
+<td>xxx</td>
+<td>同名文件夹</td>
+<td>1.html</td>
+<td>显示成功</td>
+</tr>
+<tr>
+<td></td>
+<td>images</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>到这里基本上就好了，网上也有一些别的办法，装插件什么的，我觉得很麻烦还是这个搞懂原理简单点。</p>
  
 		</div>
 		
@@ -119,7 +209,7 @@
 </div>
 <div id="toc">
     <div class="archive-toc">
-        <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#基本思路"><span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本思路"><span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li></ol>
     </div>
 </div>
 
