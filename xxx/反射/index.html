@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="以后再取名字">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+  	<link rel="stylesheet" href="/css/style.css">
+  	<link rel="stylesheet" href="/css/github-gist.css">
+    <!--SEO-->
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>反射 | 以后再取名字</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1d283676d7e81d10054b06f70a90decf";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+</head>
+  <body>
+    <div class="container">
+	<header class="header">
+	  <div class="blog-title">
+	    <a href="/"> <img src="/img/logo.png"></a>
+	  </div>
+	  <nav>
+	    <ul class="menu">
+	      
+	        <li class="menu-item">
+	          <a href="/" class="menu-item-link nav-underline">首页</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/archives" class="menu-item-link nav-underline">归档</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/categories" class="menu-item-link nav-underline">分类</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/tags" class="menu-item-link nav-underline">标签</a>
+	        </li>&sdot;
+	      
+	        <li class="menu-item">
+	          <a href="/links" class="menu-item-link nav-underline">友链</a>
+	        </li>&sdot;
+	      
+	      <li class="menu-item">
+	      <a href="/about">关于</a>
+	      </li>
+       </ul>
+	  </nav>
+	</header>
+</div>
+
+<hr />
+    <div class="container">	
+	<div class="archive-main">
+	    <div class="archive-title">
+	    	<h2>反射</h2>	    	
+	    </div>
+	    <div class="archive-meta">
+	   	    2019-09-09&nbsp;&nbsp;&sdot;&nbsp;&nbsp; 
+	   	    
+            	<a class="tag" href="/tags/#反射"title="反射">反射</a>&nbsp;&nbsp;
+            
+	    </div>
+		<hr class="one"/>
+		<div class="archive-content typo">
+			<h5 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h5><p>在Java中的反射机制是指在<strong>运行状态中，对于任意一个类都能够知道这个类所有的属性和方法；并且对于任意一个对象都能够调用它的任意一个方法。</strong></p>
+<p>在Java程序中许多对象在运行是都会出现两种类型：编译时类型和运行时类型。编译时类型由声明对象时使用的类型来决定，运行时类型由实际赋值给对象的类型决定。如：Person p=new Student(); 其中编译时类型为Person，运行时类型为Student。</p>
+<h6 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h6><p>首先，既然有反射，那么先从正射开始解释。</p>
+<p>正射：一般情况下我们使用某个类一定是知道它是什么操作用来做什么的。于是我们直接对这个类进行实例化，之后使用这个类对象进行操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person person=<span class="keyword">new</span> Person();<span class="comment">//直接初始化，相当于正射</span></span><br><span class="line">person.set();<span class="comment">//对象调用方法</span></span><br></pre></td></tr></table></figure>
+
+<p>反射：而反射则是一开始不知道需要初始化的对象时什么，自然也无法使用new关键字来创建对象了。例如：请求后台接口，根据url里面的信息进行相应的调用方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">pro8</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test tt=factory(<span class="string">"testOne"</span>);</span><br><span class="line">        tt.test();</span><br><span class="line">        test rr=factory(<span class="string">"testTwo"</span>);</span><br><span class="line">        rr.test();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test <span class="title">factory</span><span class="params">(String name)</span> </span>&#123;	</span><br><span class="line">        test test1 = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//test test1=(test)Class.forName(name).newInstance();</span></span><br><span class="line">            <span class="comment">//对于初始化对象，jdk1.9以后变成下面的了。</span></span><br><span class="line">            test1=(test)Class.forName(<span class="string">"test."</span>+name).getDeclaredConstructor().newInstance();</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> test1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">testOne</span> <span class="keyword">implements</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is testOne"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">testTwo</span> <span class="keyword">implements</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"this is testTwo"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="keyword">this</span> is testOne</span><br><span class="line"><span class="keyword">this</span> is testTwo</span><br></pre></td></tr></table></figure>
+
+<h6 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h6><ul>
+<li>反射是框架设计的灵魂</li>
+<li>反射机制就是将各个组成部分封装为其他对象。</li>
+</ul>
+<h6 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h6><ul>
+<li>可以在程序运行中，操作这些对象。</li>
+<li>可以解耦，提高程序的可扩展性</li>
+</ul>
+<h5 id="Java代码的阶段"><a href="#Java代码的阶段" class="headerlink" title="Java代码的阶段"></a>Java代码的阶段</h5><p>Java代码在计算机中经历的三个阶段</p>
+<ul>
+<li>source（源代码阶段）<ul>
+<li>Java文件被javac编译成class文件，class文件会将成员变量、成员方法和构造方法等编译成不同的模块。</li>
+<li>class文件通过classlocad类加载器来进入和下一阶段</li>
+</ul>
+</li>
+<li>class（类对象阶段）<ul>
+<li>通过classload类加载器，将class文件加载进内存，成员变量、成员方法和构造方法会被封装为class类中的对象。</li>
+</ul>
+</li>
+<li>runtime（运行阶段）<ul>
+<li>当我们需要访问Java文件的成员时，我们就可以逆向访问，通过class类的classload类加载器来获取该成员的对象。</li>
+</ul>
+</li>
+</ul>
+<h5 id="获取class对象"><a href="#获取class对象" class="headerlink" title="获取class对象"></a>获取class对象</h5><ul>
+<li><p>Class.forName(“全类名”)：将字节码文件加载进内存，返回class对象。</p>
+<ul>
+<li>处于source，并未加载进内存，用于配置文件，将类名定义在配置文件中。读取文件，从而加载类。</li>
+</ul>
+</li>
+<li><p>类名.class：通过类名的属性class获取。</p>
+<ul>
+<li>处于class，已经加载进内存，多用于参数的传递。</li>
+</ul>
+</li>
+<li><p>对象.getclass()：object类中定义的方法。</p>
+<ul>
+<li>runtime，处于运行时，用于获取对象的字节码文件对象。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">testOne to=<span class="keyword">new</span> testOne();</span><br><span class="line"><span class="comment">//方法1：对象.getClass()</span></span><br><span class="line">Class clazz1=to.getClass();</span><br><span class="line"><span class="comment">//方法2：类名.Class</span></span><br><span class="line">Class clazz2=testOne.class;</span><br><span class="line"><span class="comment">//方法3：Class.forName("全类名“),这种方法就是动态加载，需要处理异常</span></span><br><span class="line">Class clazz3=Class.forName(<span class="string">"test.testOne"</span>);</span><br><span class="line">	</span><br><span class="line"><span class="comment">//在运行期间，一个类只有一个Class对象产生，上面的三个方法只是获取对象，所以下面的都相等为true</span></span><br><span class="line">System.out.println(clazz1==clazz2);</span><br><span class="line">System.out.println(clazz2==clazz3);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="创建对象实例"><a href="#创建对象实例" class="headerlink" title="创建对象实例"></a>创建对象实例</h5><p>两种方法：</p>
+<ul>
+<li>class对象调用newInstance()方法进行实例化（针对无参构造函数）</li>
+<li>调用Constructor（构造函数）对象的newInstance()方法。(针对有参函数)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1</span></span><br><span class="line">Class clazz=Class.forName(<span class="string">"test.Person"</span>);</span><br><span class="line">Person person=(Person)clazz.newInstance();</span><br><span class="line"><span class="comment">//方法2</span></span><br><span class="line">Class clazz=Class.forName(<span class="string">"test.Person"</span>);</span><br><span class="line"><span class="comment">//获取class对象构造方法</span></span><br><span class="line">Constructor c=clazz.getDeclaredConstructors(String.class,String.class,<span class="keyword">int</span>.class);</span><br><span class="line">Person person=(Person)c.newInstance(<span class="string">"李四"</span>,<span class="string">"男"</span>,<span class="number">20</span>);<span class="comment">//实例化</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="获取构造方法"><a href="#获取构造方法" class="headerlink" title="获取构造方法"></a>获取构造方法</h5><ul>
+<li>Constructor[]  getConstructors(构造函数参数类型)，返回一个 Constructor对象数组，反射 所有的 public构造类对象。</li>
+<li>Constructor  getConstructors(构造函数参数类型)，返回一个 Constructor对象，反射 指定的 public构造类对象。</li>
+<li>Constructor[]  getDeclaredConstructor（构造函数参数类型），返回一个 Constructor对象数组，反射 所有的 构造类对象。</li>
+<li>Constructor  getDeclaredConstructor（构造函数参数类型），返回一个 Constructor对象，反射 指定的 构造类对象。</li>
+</ul>
+<h5 id="获取成员变量（属性）（导包-java-lang-reflect-Field"><a href="#获取成员变量（属性）（导包-java-lang-reflect-Field" class="headerlink" title="获取成员变量（属性）（导包 java.lang.reflect.Field)"></a>获取成员变量（属性）（导包 java.lang.reflect.Field)</h5><ul>
+<li>Field[] getField()，返回包含一个Field对象数组，反射所有可访问的public字段类对象。</li>
+<li>Field getField(String name)，返回一个Field对象，反射指定的public成员字段类对象。</li>
+<li>Field[] getDeclaredFields()，返回一个Field对象，反射所有<strong>可访问</strong>(public,private等）的已声明字段类对象。</li>
+<li>Field getDeclaredField(String name)，返回一个指定<strong>可访问</strong>(public,private等）已声明字段类对象的一个Field对象数组。</li>
+<li>既然有get那么就会有set方法，void set(Object obj,Object value),get(Object obj)</li>
+</ul>
+<h5 id="获取成员方法"><a href="#获取成员方法" class="headerlink" title="获取成员方法"></a>获取成员方法</h5><ul>
+<li><p>Method[] getMethod()，返回一个Method对象数组，反射指定的public成员方法对象。</p>
+</li>
+<li><p>Method getMethod(String name)，返回一个Method对象，反射指定的public成员方法对象。</p>
+</li>
+<li><p>Method[] getDeclaredMethods()，返回一个Method对象数组，反射 所有的成员方法类对象。</p>
+</li>
+<li><p>Method getDeclaredMethods(String name)，返回一个Method对象，反射 所有的成员方法类对象。</p>
+</li>
+</ul>
+<p>##### </p>
+<h5 id="操作Constructor（构造方法）"><a href="#操作Constructor（构造方法）" class="headerlink" title="操作Constructor（构造方法）"></a>操作Constructor（构造方法）</h5><ol>
+<li>无参构造方法：创建class对象，class对象调用newInstance方法（1.9以后方法有改变，合并为下面步骤2）</li>
+<li>有参构造方法：创建class对象，class对象调用getConstructor方法获得Constructor对象，接着cons对象调用newInstance方法实例化</li>
+</ol>
+<h5 id="操作Field（成员变量）"><a href="#操作Field（成员变量）" class="headerlink" title="操作Field（成员变量）"></a>操作Field（成员变量）</h5><p>拥有get和set方法，可以在任何时候对类对象进行改变取值。</p>
+<p>首先class对象调用getField方法获得Field对象，然后该对象调用set或者get方法</p>
+<p>void set(Object obj,Object value)  /  get(Object obj),取出来后记得值类型转换</p>
+<p>setAccessible（true）暴力反射：忽略访问权限的安全检查，也就是说虽然Field对象可以获得所有成员变量但是私有变量其实是不能使用的，所以在获得私有成员变量对象Field后需要：</p>
+<p><strong>Field对象.setAccessible(true)</strong>，接着就可以继续调用set或者get方法了</p>
+<h5 id="操作Method（成员方法）"><a href="#操作Method（成员方法）" class="headerlink" title="操作Method（成员方法）"></a>操作Method（成员方法）</h5><p>获取Method对象：class对象调用getMethod方法</p>
+<p>执行方法：Method对象调用invoke方法 Object invoke（Object object，Object..args)</p>
+<p>​    Method md=clazz.getDeclaredMethod(“test”);</p>
+<p>​    md.invoke(oo);oo是实例化对象名</p>
+<h5 id="小结：为了动态加载类对象，基本上全部需要先获取class对象，然后调用相应模块的方法获得该对象，接着配合实例化对象使用。因为直接的操作全部是class对象没有代入真正的对象。"><a href="#小结：为了动态加载类对象，基本上全部需要先获取class对象，然后调用相应模块的方法获得该对象，接着配合实例化对象使用。因为直接的操作全部是class对象没有代入真正的对象。" class="headerlink" title="小结：为了动态加载类对象，基本上全部需要先获取class对象，然后调用相应模块的方法获得该对象，接着配合实例化对象使用。因为直接的操作全部是class对象没有代入真正的对象。"></a>小结：为了动态加载类对象，基本上全部需要先获取class对象，然后调用相应模块的方法获得该对象，接着配合实例化对象使用。因为直接的操作全部是class对象没有代入真正的对象。</h5> 
+		</div>
+		
+		   
+			<div id="comments">
+                <!--
+		        
+   <p>评论系统未开启，无法评论！</p>
+
+				-->
+                <p>下面是分界线~</p>
+		    </div>
+			
+		
+	</div>
+</div>
+<div id="toc">
+    <div class="archive-toc">
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#基础知识"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#优势"><span class="toc-text">优势</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Java代码的阶段"><span class="toc-text">Java代码的阶段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取class对象"><span class="toc-text">获取class对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建对象实例"><span class="toc-text">创建对象实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取构造方法"><span class="toc-text">获取构造方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取成员变量（属性）（导包-java-lang-reflect-Field"><span class="toc-text">获取成员变量（属性）（导包 java.lang.reflect.Field)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#获取成员方法"><span class="toc-text">获取成员方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#操作Constructor（构造方法）"><span class="toc-text">操作Constructor（构造方法）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#操作Field（成员变量）"><span class="toc-text">操作Field（成员变量）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#操作Method（成员方法）"><span class="toc-text">操作Method（成员方法）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#小结：为了动态加载类对象，基本上全部需要先获取class对象，然后调用相应模块的方法获得该对象，接着配合实例化对象使用。因为直接的操作全部是class对象没有代入真正的对象。"><span class="toc-text">小结：为了动态加载类对象，基本上全部需要先获取class对象，然后调用相应模块的方法获得该对象，接着配合实例化对象使用。因为直接的操作全部是class对象没有代入真正的对象。</span></a></li></ol>
+    </div>
+</div>
+
+		<hr />
+<div class="footer">
+	
+        
+            <a href="https://github.com/xyhmnb" rel="external nofollow" title="Github" target="_blank">
+		    	<i class="iconfont">&#xeee2;</i>
+		    </a>&nbsp;&nbsp;
+        
+            <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=qJmcnZGfkZqZmpjo2dmGy8fF" rel="external nofollow" title="邮箱" target="_blank">
+		    	<i class="iconfont">&#xe69f;</i>
+		    </a>&nbsp;&nbsp;
+        
+            <a href="" rel="external nofollow" title="微信" target="_blank">
+		    	<i class="iconfont">&#xe7e5;</i>
+		    </a>&nbsp;&nbsp;
+        
+            <a href="没有微博" rel="external nofollow" title="微博" target="_blank">
+		    	<i class="iconfont">&#xe629;</i>
+		    </a>&nbsp;&nbsp;
+        
+        
+	
+</div>
+<script src="/js/highlight.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+		<div class="copyright">
+	Copyright &copy; 2019 . 豫ICP备10206454号-2<br />Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Theme is <a href="https://github.com/praming/hexo-theme-Ice" target="_blank">Ice</a>&nbsp;&nbsp;&sdot;&nbsp;&nbsp;Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+</div>
+  </body>
+</html>
